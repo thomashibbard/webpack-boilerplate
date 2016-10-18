@@ -8,6 +8,7 @@
   },
   "author": "Thomas Hibbard",
   "license": "ISC",
+  "start": "node server.js",
   "dependencies": {
     "express": "^4.14.0",
     "fs-extra": "^0.30.0",
