@@ -10,6 +10,6 @@ app.get('/', function(req, res){
 	res.sendFile(__dirname + '/build/index.html');
 })
 
-app.listen(PORT, function(){
+app.listen(process.env.PORT || 5000, function(){
 	console.log('listening on', PORT);
 })
