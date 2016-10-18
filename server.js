@@ -2,7 +2,7 @@ var express = require('express')
 	, app = express()
 	, fs = require('fs-extra');
 
-const PORT = 5200;
+const PORT = 5000;
 
 app.use(express.static(__dirname));
 
