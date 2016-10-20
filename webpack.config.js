@@ -1,8 +1,7 @@
 var path = require('path');
-var autoprefixer = require('autoprefixer');
-var precss = require('precss');
 var BrowserSyncPlugin = require('browser-sync-webpack-plugin');
-
+var autoprefixer = require('autoprefixer');
+var postcssloader = require('postcss-loader')
 
 const config = {
 	//where webpack looks to build js bundles
@@ -32,14 +31,17 @@ const config = {
 	      'query': {
 	        'presets': ['react', 'es2015']
 	      }
+	    },
+	    {
+	      test: /\.scss$/,
+	      //working, but perhaps not most modern way of autoprefixing
+	      loader: 'style-loader!css-loader!postcss-loader!sass-loader',
+	      loaders: ["style", "css", "sass"]
 	    }
-	    // ,
-     //  {
-     //    test: /\.scss$/,
-     //    include: path.resolve(process.cwd(), 'client/scss'),
-     //    loaders: ["style", "css", "sass"]
-     //  }
-	  ]
+	  ],
+	  sassLoader: {
+	    includePaths: [path.resolve(__dirname, "./build")]
+	  }
 	},
 	//how require statements are treated in client-side code
 	'resolve': {
@@ -53,7 +55,8 @@ const config = {
       // ./public directory is being served
       'host': 'localhost',
       'port': 3000,
-      'files': ['app-bundle.js', 'app-bundle.js.map'],
+      'files': ['app-bundle.js', 'index.html'],
+      //proxy noder server
       'proxy': 'http://localhost:5000',
       // server: { baseDir: ['public'] }
     })

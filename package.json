@@ -23,6 +23,7 @@
     "webpack": "^1.13.2"
   },
   "devDependencies": {
+    "autoprefixer": "^6.5.1",
     "babel-core": "^6.17.0",
     "babel-loader": "^6.2.5",
     "babel-preset-es2015": "^6.16.0",
@@ -32,9 +33,15 @@
     "browser-sync-webpack-plugin": "^1.1.3",
     "browserfy": "^1.0.0",
     "browserify": "^13.1.0",
+    "css-loader": "^0.25.0",
     "gulp": "^3.9.1",
     "i": "^0.3.5",
-    "vinyl-source-stream": "^1.1.0"
+    "node-sass": "^3.10.1",
+    "postcss-loader": "^1.0.0",
+    "sass-loader": "^4.0.2",
+    "style-loader": "^0.13.1",
+    "vinyl-source-stream": "^1.1.0",
+    "webpack": "^1.13.2"
   },
   "engines": {
     "node": "6.7.0"
