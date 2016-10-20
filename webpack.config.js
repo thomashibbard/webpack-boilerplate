@@ -14,7 +14,7 @@ const config = {
 	//output bundles webpack generates
 	'output': {
 		//where bundle will be saved
-		'path': './build',
+		'path': './build/js',
 		//templated [name] string will be replaced with 'app'
 		'filename': '[name]-bundle.js'
 	},
@@ -53,6 +53,7 @@ const config = {
       // ./public directory is being served
       'host': 'localhost',
       'port': 3000,
+      'files': ['app-bundle.js', 'app-bundle.js.map'],
       'proxy': 'http://localhost:5000',
       // server: { baseDir: ['public'] }
     })

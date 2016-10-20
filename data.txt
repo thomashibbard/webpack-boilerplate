@@ -1,0 +1,129 @@
+DATA :node_modules
+
+api-details.mdweb: node server.js#### handle: tomtest00438577
+
+
+<table>
+	<thead>
+		<tr>
+			<th colspan="2">Application Settings</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Consumer Key (API Key)</td>
+			<td>ckh3NrR7cjR7yPbYnFVZVVHTt</td>
+		</tr>
+		<tr>
+			<td>Consumer Secret (API Secret)</td>
+			<td>pbEAHsjSWGB6PKMTISKqfAiDwtFCwiMj5XFNQvCDhq06KtK1CX</td>
+		</tr>
+		<tr>
+			<td>Access LevelRead and write</td>
+			<td>(modify app permissions)</td>
+		</tr>
+		<tr>
+			<td>Owner</td>
+			<td>tomtest00438577</td>
+		</tr>
+		<tr>
+			<td>Owner ID</td>
+			<td>788499159380885505</td>
+		</tr>
+	</tbody>
+</table>
+<br><br><br>
+<table>
+	<thead>
+		<tr>
+			<th colspan="2">Your Access Token</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Access Token</td>
+			<td>788499159380885505-qPbf8TpJI1wwSiJJu4C3ViToDnqDYMG</td>
+		</tr>
+		<tr>
+			<td>Access Token Secret</td>
+			<td>72cYyBGYZoaJnMwtolC6kYWm4YwwaljiyaIPdWLZ1Vw9i</td>
+		</tr>
+	</tbody>
+</table>DATA :node_modules
+
+api-details.mdvar Promise = require('bluebird')
+	,fs = Promise.promisifyAll(require('fs-extra'))
+
+;
+
+fs.readdirAsync('.').map( (fileName) => {
+	// try{
+	// 	console.log(fs.lstatSync(fileName).isDirectory());
+	// }catch(e){
+	// 	console.log('fail', fileName);
+
+	// }
+	if(!fs.lstatSync(fileName).isDirectory()){
+		return fs.readFileAsync(fileName, 'utf8');
+	}
+})
+.then((data) => {
+		fs.writeFile('data.txt', 'DATA :' + data.join(''))
+
+	// fs.writeFile('data.txt', 'DATA :' + data)
+}){
+  "name": "react-essentials",
+  "version": "1.0.0",
+  "description": "test react essentials twitter api exploration",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Thomas Hibbard",
+  "license": "ISC",
+  "start": "node server.js",
+  "dependencies": {
+    "bluebird": "^3.4.6",
+    "express": "^4.14.0",
+    "fs-extra": "^0.30.0",
+    "react": "^15.3.2",
+    "react-dom": "^15.3.2",
+    "request": "^2.75.0",
+    "serve-index": "^1.8.0"
+  },
+  "devDependencies": {
+    "babel-preset-es2015": "^6.16.0",
+    "babel-preset-react": "^6.16.0",
+    "babelify": "^7.3.0",
+    "browserfy": "^1.0.0",
+    "browserify": "^13.1.0",
+    "gulp": "^3.9.1",
+    "vinyl-source-stream": "^1.1.0"
+  },
+  "engines": {
+    "node": "6.7.0"
+  }
+}
+var express = require('express')
+	, app = express()
+	, fs = require('fs-extra')
+	, serveIndex = require('serve-index');;
+
+const PORT = process.env.PORT || 5000;
+
+app.use(express.static(__dirname));
+// app.use('node_modules', express.static(__dirname + '/node_modules'));
+// app.use('/public', express.static(__dirname + '/public'));
+// app.use(express.static(__dirname + '/public'));
+app.use('/public', serveIndex(__dirname + '/public'));
+
+
+app.get('/', function(req, res){
+	res.sendFile(__dirname + '/build/index.html');
+})
+
+app.listen(PORT, function(){
+	console.log('listening on', PORT);
+})
+
+
