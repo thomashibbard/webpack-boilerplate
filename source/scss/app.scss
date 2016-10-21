@@ -1,0 +1,31 @@
+@import "~susy/sass/susy";
+
+$susy: (
+	columns: 12,
+	gutters: 1/4,
+	math: fluid,
+	output: float,
+	gutter-position: after
+);
+
+
+.wrap {
+	@include container(80em);
+}
+
+div{
+	background: #efefef;
+}
+
+/* Tells Susy there's 8 columns in the content */
+.content {
+  @include span(3);
+}
+div.content:last-child {
+	// @import(last);
+}
+
+/* Tells Susy there's 4 columns in the sidebar, and its the last item on the row. */
+.sidebar {
+  @include span(4 last);
+}
