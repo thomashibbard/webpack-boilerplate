@@ -10,22 +10,50 @@ $susy: (
 
 
 .wrap {
+	border: 1px solid;
+	margin-top: 80px;
 	@include container(80em);
-}
 
-div{
-	background: #efefef;
+	&.four{
+
+		.content {
+			@include span(3);
+			height: 50px;
+			background: grey;
+			color: red;
+
+			&:last-of-type {
+				color: orange;
+				@include span(3 last);
+			}
+		}
+	}
+
+	&.twelve {
+
+		.content {
+			@include span(1);
+			height: 50px;
+			background: grey;
+			color: red;
+
+			&:last-of-type {
+				color: orange;
+				@include span(1 last);
+			}
+		}
+	}
+
+
 }
 
 /* Tells Susy there's 8 columns in the content */
-.content {
-  @include span(3);
-}
-div.content:last-child {
-	// @import(last);
-}
+// div{
+
+
+// }
+// div.content:last-child {
+// 	// @import(last);
+// }
 
 /* Tells Susy there's 4 columns in the sidebar, and its the last item on the row. */
-.sidebar {
-  @include span(4 last);
-}

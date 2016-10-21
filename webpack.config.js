@@ -6,7 +6,7 @@ var BrowserSyncPlugin = require('browser-sync-webpack-plugin')
 
 
 //modules to expose
-var sass = require('./source/scss/app.scss');
+// var sass = require('./source/scss/app.scss');
 
 const config = {
 	//where webpack looks to build js bundles
@@ -40,12 +40,8 @@ const config = {
 	    {
 	      test: /\.scss$/,
 	      //working, but perhaps not most modern way of autoprefixing
-	      loader: 'style-loader!css-loader!postcss-loader!sass-loader'//?includePaths[]=' + path.resolve(__dirname, './node_modules/compass-mixins/lib')
+	      loader: 'style-loader!css-loader!postcss-loader!sass-loader?'//includePaths[]=' + path.resolve(__dirname, './node_modules/compass-mixins/lib')
 	      //loaders: ["style", "css", "sass"]
-	    },
-	    {
-	        test: /\.(scss|css)$/,
-	        loader: ExtractTextPlugin.extract('style', 'css!postcss!sass')
 	    }
 	  ],
 	  sassLoader: {
@@ -59,7 +55,7 @@ const config = {
 	},
 
   plugins: [
-  	new ExtractTextPlugin('css/bundle.css'),
+  	//new ExtractTextPlugin('css/bundle.css'),
     new BrowserSyncPlugin({
       // browse to http://localhost:3000/ during development,
       // ./public directory is being served
